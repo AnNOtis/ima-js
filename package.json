@@ -1,0 +1,8 @@
+{
+  "name": "ima",
+  "version": "0.1.0",
+  "description": "Image processer in browser",
+  "main": "index.js",
+  "repository": "AnNOtis/ima-js",
+  "license": "MIT"
+}
