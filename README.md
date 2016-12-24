@@ -1,4 +1,4 @@
-# ima
+# ima-js
 > Image processer in browser
 
 ## Usage

@@ -1,5 +1,5 @@
 {
-  "name": "ima",
+  "name": "ima-js",
   "version": "0.1.0",
   "description": "Image processer in browser",
   "main": "index.js",
