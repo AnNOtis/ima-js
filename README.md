@@ -1,10 +1,10 @@
 # ima-js
-> Image processer in browser
+> Image processing wrapper in browser
 
 ## Usage
 ```js
-// load ixage
-ima.load(file | blob | string) // => ixage
+// load image
+ima.load(file | blob | string) // => image
 
 // init ima object
 ima(<HTMLImageElement>)
@@ -36,7 +36,7 @@ ima(ima.load('http://placehold.it/300.png'))
 
 ## API
 
-### ima.load(File | Blob | String) -> Promise(canvas | ixage)
+### ima.load(File | Blob | String) -> Promise(canvas | image)
 ### ima() -> ima object
 - HTMLImageElement
 - HTMLCanvasElement
