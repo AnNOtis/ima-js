@@ -4,5 +4,14 @@
   "description": "Image processer in browser",
   "main": "index.js",
   "repository": "AnNOtis/ima-js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "space": 2,
+    "semicolon": false,
+    "esnext": false,
+    "envs": ["browser"]
+  }
 }
