@@ -1,3 +1,5 @@
+import load from './load'
+
 export const IMAGE_TYPE = 'image'
 export const CANVAS_TYPE = 'canvas'
 
@@ -46,5 +48,7 @@ function _createCanvas({width, height}) {
   canvas.height = height
   return canvas
 }
+
+Ima.load = load
 
 export default Ima
