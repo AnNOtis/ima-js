@@ -25,7 +25,7 @@ function load(imageResource) {
 function buildImage(source, onLoad, onError) {
   const image = document.createElement('img')
   image.onerror = onError
-  image.onLoad = () => onLoad(image)
+  image.onload = () => onLoad(image)
   image.src = source
 }
 

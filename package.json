@@ -6,8 +6,9 @@
   "repository": "AnNOtis/ima-js",
   "license": "MIT",
   "scripts": {
-    "test": "xo && ava",
-    "build": "babel src/index.js -o dist/ima.js"
+    "test": "ava",
+    "build": "babel src/index.js -o dist/ima.js",
+    "lint": "xo"
   },
   "ava": {
     "require": [
@@ -28,7 +29,9 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "base64-image-fixture": "^1.1.0",
     "jsdom": "^9.9.1",
     "xo": "^0.17.1"
   }
