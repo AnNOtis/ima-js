@@ -1,12 +1,12 @@
 import {isFile, isBlob} from './utils/is-a'
 
-function load(imageResource) {
+function load(imageResource, options = {}) {
   if (!imageResource) {
     throw new TypeError('ima.load(resource) - Need to specify a resource.')
   }
 
   if (typeof imageResource === 'string') {
-    return new Promise((resolve, reject) => buildImage(imageResource, resolve, reject))
+    return new Promise((resolve, reject) => buildImage(imageResource, resolve, reject, options))
   } else if (isFile(imageResource) || isBlob(imageResource)) {
     return new Promise((resolve, reject) => {
       readFile(
@@ -22,10 +22,13 @@ function load(imageResource) {
   )
 }
 
-function buildImage(source, onLoad, onError) {
+function buildImage(source, onLoad, onError, options) {
   const image = document.createElement('img')
   image.onerror = onError
-  image.onLoad = () => onLoad(image)
+  image.onload = () => onLoad(image)
+  if (options.crossOrigin) {
+    image.crossOrigin = options.crossOrigin
+  }
   image.src = source
 }
 
