@@ -1,7 +1,7 @@
 import test from 'ava'
-import jsdom from 'jsdom'
 
 import ima, {IMAGE_TYPE, CANVAS_TYPE} from '../src/index'
+import {prepareDocument} from './helpers/dom'
 
 test('ima() - empty selector', t => {
   t.throws(() => ima(null), /Selector is empty\./)
@@ -57,7 +57,3 @@ test('ima({width, height}) - create canvas', t => {
   t.is(ima(size).origin.width, size.width)
   t.is(ima(size).origin.height, size.height)
 })
-
-function prepareDocument(content) {
-  global.document = jsdom.jsdom(content).defaultView.document
-}
