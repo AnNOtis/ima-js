@@ -1,7 +1,5 @@
 /* global define */
 
-import load from './load'
-
 ((root, factory) => {
   if (typeof define === 'function' && define.amd) {
     define([], factory)
@@ -60,7 +58,7 @@ import load from './load'
     return canvas
   }
 
-  ima.load = load
+  ima.load = require('./load')
 
   return ima
 })

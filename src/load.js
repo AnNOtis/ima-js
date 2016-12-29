@@ -1,4 +1,4 @@
-import {isFile, isBlob} from './utils/is-a'
+const {isFile, isBlob} = require('./utils/is-a')
 
 function load(imageResource, options = {}) {
   if (!imageResource) {
@@ -50,4 +50,4 @@ function readFile(file, onLoad, onError) {
   }
 }
 
-export default load
+module.exports = load
