@@ -1,6 +1,6 @@
-const {isFile, isBlob} = require('./utils/is-a')
+import {isFile, isBlob} from './utils/is-a'
 
-function load(imageResource, options = {}) {
+export default function load(imageResource, options = {}) {
   if (!imageResource) {
     throw new TypeError('ima.load(resource) - Need to specify a resource.')
   }
@@ -22,7 +22,7 @@ function load(imageResource, options = {}) {
   )
 }
 
-function buildImage(source, onLoad, onError, options) {
+function buildImage(source, onLoad, onError, options = {}) {
   const image = document.createElement('img')
   image.onerror = onError
   image.onload = () => onLoad(image)
@@ -39,7 +39,7 @@ function readFile(file, onLoad, onError) {
     (window.webkitURL && window.webkitURL.createObjectURL)
 
   if (createObjectURL) {
-    onLoad(createObjectURL(File))
+    onLoad(createObjectURL(file))
   } else if (window.FileReader) {
     const reader = new FileReader()
     reader.onload = () => onLoad(reader.result)
@@ -49,5 +49,3 @@ function readFile(file, onLoad, onError) {
     onError(new Error('File API not support.'))
   }
 }
-
-module.exports = load
