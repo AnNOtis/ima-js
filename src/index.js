@@ -1,11 +1,13 @@
 import load from './load'
+import make from './prototype/make'
+import {isNumber} from './utils/is-a'
 
 const IMAGE_TYPE = 'image'
 const CANVAS_TYPE = 'canvas'
 
 function ima(selector) {
   if (!this || this.constructor !== ima) {
-    return new ima(selector) // eslint-disable-line new-cap
+    return new ima(...arguments) // eslint-disable-line new-cap
   }
 
   if (!selector) {
@@ -13,6 +15,7 @@ function ima(selector) {
   }
 
   if (typeof selector === 'string') {
+    // e.g. ima('domID')
     const elem = document.getElementById(selector)
 
     if (!elem) {
@@ -21,12 +24,13 @@ function ima(selector) {
 
     _assignElementInfo.call(this, elem)
   } else if (selector.nodeType) {
+    // e.g. <ima>, <canvas>
     _assignElementInfo.call(this, selector)
-  } else if (typeof selector === 'object') {
-    if (!selector.width || !selector.height) {
-      throw new TypeError('Need to set width and height.')
-    }
-    _assignElementInfo.call(this, _createCanvas(selector))
+  } else if (isNumber(arguments[0])) {
+    // e.g. ima(100, 200)
+    _assignElementInfo.call(this, ima.create(arguments[0], arguments[1]))
+  } else {
+    throw new TypeError('Uknown selector')
   }
 }
 
@@ -42,13 +46,14 @@ function _assignElementInfo(elem) {
   }
 }
 
-function _createCanvas({width, height}) {
+ima.create = (w, h) => {
   const canvas = document.createElement('canvas')
-  canvas.width = width
-  canvas.height = height
+  canvas.width = w
+  canvas.height = h
   return canvas
 }
 
 ima.load = load
+ima.prototype.make = make
 
 export default ima

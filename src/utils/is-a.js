@@ -1,7 +1,15 @@
 export function isFile(value) {
-  return Object.prototype.toString.call(value) === '[object File]'
+  return _is('File')(value)
 }
 
 export function isBlob(value) {
-  return Object.prototype.toString.call(value) === '[object Blob]'
+  return _is('Blob')(value)
+}
+
+export function isNumber(value) {
+  return _is('Number')(value)
+}
+
+function _is(type) {
+  return value => Object.prototype.toString.call(value) === `[object ${type}]`
 }

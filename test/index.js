@@ -51,9 +51,12 @@ test('ima() - without image or canvas element', t => {
   )
 })
 
-test('ima({width, height}) - create canvas', t => {
-  const size = {width: 200, height: 300}
-  t.is(ima(size).type, 'canvas')
-  t.is(ima(size).origin.width, size.width)
-  t.is(ima(size).origin.height, size.height)
+test('ima(width, height) - create canvas', t => {
+  prepareDocument()
+  const width = 200
+  const height = 300
+  const canvas = ima(width, height)
+  t.is(canvas.type, 'canvas')
+  t.is(canvas.origin.width, width)
+  t.is(canvas.origin.height, height)
 })
