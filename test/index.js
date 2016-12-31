@@ -1,7 +1,7 @@
 import test from 'ava'
 
-const ima = require('../src/index')
-const prepareDocument = require('./helpers/dom').prepareDocument
+import ima from '../src/index'
+import {prepareDocument} from './helpers/dom'
 
 test('ima() - empty selector', t => {
   t.throws(() => ima(null), /Selector is empty\./)
