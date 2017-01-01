@@ -11,20 +11,17 @@ ima(<HTMLImageElement>)
 ima(<HTMLCanvasElement>)
 ima('#img')
 ima('#canvas')
-ima({width: 300, height: 300})
+ima(300, 300)
 ima(Promise) // => Promise with one of above types
 
 // transform
 const imaObj = ima(imgElem)
-imaObj.resize({width: 100, height: 100})
-imaObj.resize({width: 100})
-imaObj.resize({width: 100, step: 2})
-imaObj.resize({width: 100, step: 'auto'})
-imaObj.crop({width: 100, height: 200})
+imaObj.resize(100, 100)
+imaObj.crop(100, 200)
 imaObj.onTo(targetImaObject, {x: 10, y: 80} | 'center' | 'contain' | 'cover' )
 
 // evaluate
-imaObj.do()
+imaObj.do(), imaObj.make(), imaObj.then()
 
 // chain
 ima(ima.load('http://placehold.it/300.png'))
@@ -41,7 +38,7 @@ ima(ima.load('http://placehold.it/300.png'))
 - HTMLImageElement
 - HTMLCanvasElement
 - Element ID
-- {width: number, height: number}
+- width, height
 - Promise
 
 ### imaObj.resize({})

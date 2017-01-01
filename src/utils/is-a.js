@@ -10,6 +10,10 @@ export function isNumber(value) {
   return _is('Number')(value)
 }
 
+export function isFunc(value) {
+  return _is('Function')(value)
+}
+
 function _is(type) {
   return value => Object.prototype.toString.call(value) === `[object ${type}]`
 }

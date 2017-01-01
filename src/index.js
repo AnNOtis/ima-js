@@ -1,4 +1,5 @@
 import load from './load'
+import resize from './prototype/resize'
 import make from './prototype/make'
 import {isNumber} from './utils/is-a'
 
@@ -53,7 +54,23 @@ ima.create = (w, h) => {
   return canvas
 }
 
+ima.prototype._getCurrent = function () {
+  return this._current || this.origin
+}
+
+ima.prototype._addProcess = function (process) {
+  this._processes = (this._processes || []).concat(process)
+  return this._processes
+}
+
+ima.prototype._setCurrent = function (next) {
+  this._current = next
+}
+
 ima.load = load
+ima.prototype.resize = resize
+ima.prototype.then = make
+ima.prototype.do = make
 ima.prototype.make = make
 
 export default ima
